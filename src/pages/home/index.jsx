@@ -1,3 +1,5 @@
+import * as S from "./styles";
+
 export const HomePage = () => {
-  return <></>;
+  return <S.Container>dddffdff</S.Container>;
 };
