@@ -5,6 +5,7 @@ export const Container = styled.div`
   min-height: 100vh;
   background-image: url(/src/assets/fundo4.png);
   background-position: 0 0;
+  background-position-y: 55px;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: auto 100%;
 `;
