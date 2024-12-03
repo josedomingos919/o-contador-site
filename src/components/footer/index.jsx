@@ -20,7 +20,15 @@ export const Footer = () => {
             </S.ListItem>
           </S.List>
         </S.Header>
-        <S.WhasAppBox></S.WhasAppBox>
+        <S.WhasAppBox>
+          <S.WhasAppBoxInfo>
+            Pretende começar a trabalhar com<br></br> o contador, Hoje ?
+          </S.WhasAppBoxInfo>
+          <S.WhasAppBoxRihtContent>
+            <S.InputOpacity type="email" placeholder="Deixe o seu email" />
+            <S.SendButton>Enviar</S.SendButton>
+          </S.WhasAppBoxRihtContent>
+        </S.WhasAppBox>
       </S.Content>
     </S.Container>
   );
