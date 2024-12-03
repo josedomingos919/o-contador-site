@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-import { Footer, Header, Landing } from "../../components";
+import { CopyRight, Footer, Header, Landing } from "../../components";
 
 export const HomePage = () => {
   return (
@@ -8,6 +8,7 @@ export const HomePage = () => {
       <Header />
       <Landing />
       <Footer />
+      <CopyRight />
     </S.Container>
   );
 };

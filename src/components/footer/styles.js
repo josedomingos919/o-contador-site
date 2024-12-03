@@ -6,9 +6,7 @@ export const Container = styled.footer`
   width: 100%;
   position: relative;
   background-color: ${colors.primary};
-
   background-image: url(/footer.png);
-
   background-repeat: no-repeat;
 `;
 
@@ -25,6 +23,41 @@ export const WhasAppBox = styled.div`
   background-color: ${colors.whiteOpacity};
   display: flex;
   justify-content: space-between;
+`;
+
+export const BoxAddress = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin-top: 50px;
+`;
+
+export const BoxAddressAddress = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+`;
+
+export const BoxAddressSocial = styled.div`
+  gap: 20px;
+  display: flex;
+`;
+
+export const LinkSocial = styled.a`
+  text-decoration: none;
+  color: ${colors.iconDark};
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: ${colors.yellowLight};
+  }
+`;
+
+export const AddressLabel = styled.label`
+  font-size: 13px;
+  color: ${colors.textDark};
+  font-family: "Montserrat", sans-serif;
 `;
 
 export const WhasAppBoxInfo = styled.h2`
