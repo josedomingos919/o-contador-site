@@ -6,6 +6,10 @@ export const Container = styled.footer`
   width: 100%;
   position: relative;
   background-color: ${colors.primary};
+
+  background-image: url(/footer.png);
+
+  background-repeat: no-repeat;
 `;
 
 export const Content = styled.div`
