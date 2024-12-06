@@ -36,7 +36,7 @@ export const Strong = styled.strong`
 `;
 
 export const CardContainer = styled.div`
-  margin-top: 50px;
+  position: relative;
   display: flex;
   width: 100%;
   max-width: 1280px;
@@ -44,6 +44,9 @@ export const CardContainer = styled.div`
   overflow-y: hidden;
   padding: 0px 20px;
   gap: 35px;
+
+  padding-top: 50px;
+  margin-top: 25px;
 
   & > div:first-child {
     margin-left: 35px;
@@ -77,4 +80,19 @@ export const CardContainer = styled.div`
   /* For Firefox */
   scrollbar-width: thin; /* Thin scrollbar */
   scrollbar-color: ${colors.yellowLight} transparent; /* Custom colors */
+`;
+
+export const LabelServices = styled.label`
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 5px solid ${colors.yellowLight3};
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+  color: ${colors.black};
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 7px;
+  border-radius: 50%;
 `;

@@ -17,6 +17,7 @@ export const Session1 = () => {
         <S.Strong>qualquer tipo de negócio</S.Strong>
       </S.Content>
       <S.CardContainer>
+        <S.LabelServices>Serviços</S.LabelServices>
         <ServiceCard
           icon={
             <img
