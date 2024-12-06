@@ -4,3 +4,4 @@ export * from "./landing";
 export * from "./copyright";
 export * from "./session1";
 export * from "./whasAppButton";
+export * from "./banner";

@@ -4,6 +4,8 @@ export const colors = {
   secundary: "#2d1e0b",
   white: "#ffffff",
   whiteOpacity: "#ffffff0a",
+  whiteOpacity1: "#ffffffa6",
+  whiteOpacity2: "#ffffffcf",
   yellow: "#c17935",
   iconDark: "#6d6e76",
   yellowLight: "#AF7B3F",

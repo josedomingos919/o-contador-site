@@ -1,6 +1,7 @@
 import * as S from "./styles";
 
 import {
+  Banner,
   CopyRight,
   Footer,
   Header,
@@ -15,6 +16,7 @@ export const HomePage = () => {
       <Header />
       <Landing />
       <Session1 />
+      <Banner />
       <Footer />
       <CopyRight />
       <WhasAppButton />
