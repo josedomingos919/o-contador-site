@@ -8,6 +8,7 @@ export const Container = styled.section`
   justify-content: center;
   margin-top: 50px;
   margin-bottom: 50px;
+  overflow: hidden;
   font-family: "Montserrat", sans-serif;
 `;
 
@@ -48,7 +49,7 @@ export const CardContainer = styled.div`
   padding-top: 50px;
   margin-top: 25px;
 
-  & > div:first-child {
+  & .first-service-card {
     margin-left: 35px;
   }
 
@@ -99,4 +100,5 @@ export const LabelServices = styled.label`
   padding-right: 10px;
   padding-bottom: 7px;
   border-radius: 50%;
+  margin-left: 35px;
 `;

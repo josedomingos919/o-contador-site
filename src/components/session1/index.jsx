@@ -19,6 +19,7 @@ export const Session1 = () => {
       <S.CardContainer>
         <S.LabelServices>Serviços</S.LabelServices>
         <ServiceCard
+          className="first-service-card"
           icon={
             <img
               width="34"

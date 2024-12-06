@@ -1,8 +1,8 @@
 import * as S from "./styles";
 
-export const ServiceCard = ({ icon, title, description }) => {
+export const ServiceCard = ({ className = "", icon, title, description }) => {
   return (
-    <S.Container>
+    <S.Container className={className}>
       <S.Icon>{icon}</S.Icon>
       <S.Label>{title}</S.Label>
       <S.Text>{description}</S.Text>
