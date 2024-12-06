@@ -52,4 +52,29 @@ export const CardContainer = styled.div`
   & > div:last-child {
     margin-right: 35px;
   }
+
+  /* Style the scrollbar for WebKit browsers */
+  ::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar for horizontal scroll */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${colors.yellowLight}; /* Semi-transparent thumb */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${colors.yellowLight}; /* Darker on hover for better visibility */
+  }
+
+  /* For Firefox */
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: ${colors.yellowLight} transparent; /* Custom colors */
 `;
