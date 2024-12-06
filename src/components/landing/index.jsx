@@ -2,7 +2,7 @@ import * as S from "./styles";
 
 import missaoPng from "../../assets/missao.png";
 import visaoPng from "../../assets/visao.png";
-import valorPng from "../../assets/visao.png";
+import valorPng from "../../assets/valor.png";
 
 export const Landing = () => {
   return (
