@@ -80,6 +80,10 @@ export const CardContainer = styled.div`
   /* For Firefox */
   scrollbar-width: thin; /* Thin scrollbar */
   scrollbar-color: ${colors.yellowLight} transparent; /* Custom colors */
+
+  & > div:nth-child(2n) {
+    background: linear-gradient(to bottom, #af7b3f52, white);
+  }
 `;
 
 export const LabelServices = styled.label`
