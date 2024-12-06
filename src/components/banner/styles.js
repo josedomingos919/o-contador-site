@@ -23,6 +23,8 @@ export const FundoBlack = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
 `;
 
 export const Title = styled.h1`
