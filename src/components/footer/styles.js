@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { colors } from "../../styles/colors";
+import { sizes } from "../../styles/size";
 
 export const Container = styled.footer`
   width: 100%;
@@ -15,6 +16,13 @@ export const Content = styled.div`
   flex: 1;
   max-width: 1280px;
   margin: 0 auto;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    display: flex;
+    padding: 30px 40px;
+    flex-direction: column;
+  }
 `;
 
 export const WhasAppBox = styled.div`
@@ -23,6 +31,14 @@ export const WhasAppBox = styled.div`
   background-color: ${colors.whiteOpacity};
   display: flex;
   justify-content: space-between;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    gap: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const BoxAddress = styled.div`
@@ -30,17 +46,35 @@ export const BoxAddress = styled.div`
   flex: 1;
   justify-content: space-between;
   margin-top: 50px;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
 `;
 
 export const BoxAddressAddress = styled.div`
   display: flex;
   gap: 8px;
   flex-direction: column;
+
+  @media (max-width: ${sizes.mobile}) {
+    gap: 25px;
+    text-align: center;
+  }
 `;
 
 export const BoxAddressSocial = styled.div`
   gap: 20px;
   display: flex;
+
+  @media (max-width: ${sizes.mobile}) {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const LinkSocial = styled.a`
@@ -66,6 +100,11 @@ export const WhasAppBoxInfo = styled.h2`
   font-size: 20px;
   color: ${colors.white};
   flex: 1;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    text-align: center;
+  }
 `;
 
 export const WhasAppBoxRihtContent = styled.div`
@@ -74,6 +113,13 @@ export const WhasAppBoxRihtContent = styled.div`
   align-items: center;
   flex: 1;
   gap: 10px;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const InputOpacity = styled.input`
@@ -86,6 +132,14 @@ export const InputOpacity = styled.input`
   padding: 0px 25px;
   color: ${colors.inputBorder};
   font-size: 15px;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    max-width: unset;
+    width: 100%;
+    padding: unset;
+    text-align: center;
+  }
 `;
 
 export const SendButton = styled.button`
@@ -103,6 +157,12 @@ export const SendButton = styled.button`
   &:hover {
     box-shadow: ${colors.whiteOpacity} 4px 3px 10px 5px;
   }
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    max-width: unset;
+    width: 100%;
+  }
 `;
 
 export const Header = styled.div`
@@ -110,6 +170,16 @@ export const Header = styled.div`
   flex-direction: row;
   margin-bottom: 50px;
   justify-content: space-between;
+
+  //mobile
+  @media (max-width: ${sizes.mobile}) {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 export const ImageLogo = styled.img`
@@ -118,6 +188,11 @@ export const ImageLogo = styled.img`
   align-self: flex-start;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+
+  @media (max-width: ${sizes.mobile}) {
+    margin: unset;
+    align-self: unset;
+  }
 `;
 
 export const List = styled.ul`
@@ -126,6 +201,12 @@ export const List = styled.ul`
   list-style: none;
   flex-direction: row;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 export const ListItem = styled.li`

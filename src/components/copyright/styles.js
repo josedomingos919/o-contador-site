@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { colors } from "../../styles/colors";
+import { sizes } from "../../styles/size";
 
 export const Container = styled.div`
   width: 100%;
@@ -11,4 +12,9 @@ export const Container = styled.div`
   font-size: 12.5px;
   color: ${colors.black};
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    text-align: center;
+    padding: 10px 10px;
+  }
 `;
