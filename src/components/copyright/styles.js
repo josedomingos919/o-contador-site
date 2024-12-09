@@ -4,7 +4,6 @@ import { colors } from "../../styles/colors";
 import { sizes } from "../../styles/size";
 
 export const Container = styled.div`
-  width: 100%;
   min-height: 30px;
   display: flex;
   align-items: center;
