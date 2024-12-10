@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { colors } from "../../styles/colors";
+import { sizes } from "../../styles/size";
 
 export const Container = styled.div`
   height: 100vh;
@@ -23,6 +24,10 @@ export const CircleContainer = styled.div`
   bottom: 0;
   width: 56%;
   justify-content: center;
+
+  @media (max-width: ${sizes.mobile}) {
+    display: none;
+  }
 `;
 
 export const Circle = styled.div`

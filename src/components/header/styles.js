@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { sizes } from "../../styles/size";
 
 export const Container = styled.header`
   height: 55px;
@@ -26,13 +27,28 @@ export const Content = styled.div`
   max-width: 1200px;
   color: ${colors.white};
   padding: 0px 60px;
+
+  @media (max-width: ${sizes.mobile}) {
+    padding: 0px 2rem;
+  }
+`;
+
+export const ToggleButton = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 export const ImageLogo = styled.img`
-  align-self: flex-start;
   height: 55px;
+  align-self: flex-start;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+
+  @media (max-width: ${sizes.mobile}) {
+    height: 45px;
+    align-self: unset;
+  }
 `;
 
 export const List = styled.ul`
@@ -41,6 +57,10 @@ export const List = styled.ul`
   list-style: none;
   flex-direction: row;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    display: none;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -55,5 +75,41 @@ export const Link = styled.a`
   &:hover {
     text-decoration: underline;
     color: ${colors.yellow};
+  }
+`;
+
+export const LabelHaburguer = styled.label`
+  font-size: 20px;
+  color: ${colors.white};
+  background-color: transparent;
+
+  .fa-xmark {
+    display: none;
+  }
+`;
+
+export const CheckboxLabel = styled.input`
+  display: none;
+
+  &:checked ~ ul {
+    left: 0;
+    top: 0;
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    margin-top: 55px;
+    padding-left: 1rem;
+    position: absolute;
+    justify-content: unset;
+    flex-direction: column;
+    background-color: ${colors.primary};
+  }
+
+  &:checked ~ label .fa-solid.fa-xmark {
+    display: unset !important;
+  }
+
+  &:checked ~ label .fa-solid.fa-bars {
+    display: none !important;
   }
 `;
