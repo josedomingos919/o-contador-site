@@ -15,6 +15,10 @@ export const Container = styled.header`
   justify-content: center;
   align-items: center;
   z-index: 100;
+
+  @media (max-width: ${sizes.mobile}) {
+    height: 60px !important;
+  }
 `;
 
 export const Content = styled.div`
@@ -79,6 +83,7 @@ export const Link = styled.a`
 `;
 
 export const LabelHaburguer = styled.label`
+  display: none;
   font-size: 20px;
   color: ${colors.white};
   background-color: transparent;
@@ -86,23 +91,29 @@ export const LabelHaburguer = styled.label`
   .fa-xmark {
     display: none;
   }
+
+  @media (max-width: ${sizes.mobile}) {
+    display: flex;
+  }
 `;
 
 export const CheckboxLabel = styled.input`
   display: none;
 
   &:checked ~ ul {
-    left: 0;
-    top: 0;
-    gap: 10px;
-    padding: 10px;
-    display: flex;
-    margin-top: 55px;
-    padding-left: 1rem;
-    position: absolute;
-    justify-content: unset;
-    flex-direction: column;
-    background-color: ${colors.primary};
+    @media (max-width: ${sizes.mobile}) {
+      left: 0;
+      top: 0;
+      gap: 10px;
+      padding: 10px;
+      display: flex;
+      margin-top: 55px;
+      padding-left: 1rem;
+      position: absolute;
+      justify-content: unset;
+      flex-direction: column;
+      background-color: ${colors.primary};
+    }
   }
 
   &:checked ~ label .fa-solid.fa-xmark {

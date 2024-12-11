@@ -36,6 +36,30 @@ export const Landing = () => {
           </S.Link>
         </S.Circle>
       </S.CircleContainer>
+      <S.MobileContainer>
+        <S.MobileContent>
+          <S.MobileTitle>
+            Nossa Missão é Fazer<br></br> o Seu Telefone Tocar
+          </S.MobileTitle>
+          <S.MobileSubTitle>
+            Desde 2012 no mercado ajudando escritórios contábeis de toda Angola
+            a Conquistar Clientes pela Internet.
+          </S.MobileSubTitle>
+          <S.MobileInfo>Conheça nosso Trabalho!</S.MobileInfo>
+          <S.ButtonContainer>
+            <S.ButtonSpeakWithUs
+              onClick={() => {
+                window.open(
+                  "https://api.whatsapp.com/send/?phone=244926157276&text&type=phone_number&app_absent=0",
+                  "_blank"
+                );
+              }}
+            >
+              <i class="fa-regular fa-message"></i>Fale com a Gente!
+            </S.ButtonSpeakWithUs>
+          </S.ButtonContainer>
+        </S.MobileContent>
+      </S.MobileContainer>
     </S.Container>
   );
 };

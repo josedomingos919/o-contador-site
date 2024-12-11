@@ -13,6 +13,10 @@ export const Container = styled.div`
   background-position-y: 55px;
   background-repeat: no-repeat;
   background-size: auto 100%;
+
+  @media (max-width: ${sizes.mobile}) {
+    height: 50vh;
+  }
 `;
 
 export const CircleContainer = styled.div`
@@ -74,4 +78,65 @@ export const Image = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 60px;
+`;
+
+export const MobileContainer = styled.div`
+  display: none;
+
+  @media (max-width: ${sizes.mobile}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const MobileContent = styled.div`
+  color: ${colors.white};
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: "Montserrat", sans-serif;
+`;
+
+export const MobileTitle = styled.label`
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: ${colors.whiteOpacity2};
+`;
+
+export const MobileSubTitle = styled.label`
+  font-size: 13px;
+  margin-bottom: 1rem;
+`;
+
+export const MobileInfo = styled.strong`
+  font-style: italic;
+  font-size: 12px;
+  margin-bottom: 16px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: -20px;
+`;
+
+export const ButtonSpeakWithUs = styled.button`
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 15px;
+  font-size: 17px;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: ${colors.white};
+  background-color: ${colors.yellow};
+  border: 1px solid ${colors.white};
 `;

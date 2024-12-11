@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.a`
   right: 0;
   bottom: 0;
+  z-index: 2000;
   position: fixed;
   cursor: pointer;
   margin-right: 30px;

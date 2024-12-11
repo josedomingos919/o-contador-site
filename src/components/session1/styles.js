@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { sizes } from "../../styles/size";
 
 export const Container = styled.section`
   display: flex;
@@ -10,6 +11,10 @@ export const Container = styled.section`
   margin-bottom: 50px;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    margin-top: 40px;
+  }
 `;
 
 export const H1 = styled.label`
@@ -29,6 +34,11 @@ export const Content = styled.label`
   color: #081430;
   padding: 0px 15px;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    font-size: 22px;
+    margin-top: 15px;
+  }
 `;
 
 export const Strong = styled.strong`
@@ -37,6 +47,10 @@ export const Strong = styled.strong`
 `;
 
 export const CardContainer = styled.div`
+  @media (max-width: ${sizes.mobile}) {
+    margin-top: 30px;
+  }
+
   position: relative;
   display: flex;
   width: 100%;
