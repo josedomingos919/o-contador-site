@@ -15,7 +15,7 @@ export const Container = styled.div`
   background-size: auto 100%;
 
   @media (max-width: ${sizes.mobile}) {
-    height: 50vh;
+    height: 60vh;
   }
 `;
 
