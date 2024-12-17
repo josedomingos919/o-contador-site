@@ -2,11 +2,12 @@ import * as S from "./styles";
 
 import {
   Banner,
-  CopyRight,
   Footer,
   Header,
   Landing,
   Session1,
+  Session2,
+  CopyRight,
   WhasAppButton,
 } from "../../components";
 
@@ -17,6 +18,7 @@ export const HomePage = () => {
       <Landing />
       <Session1 />
       <Banner />
+      <Session2 />
       <Footer />
       <CopyRight />
       <WhasAppButton />
