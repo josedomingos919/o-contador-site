@@ -17,7 +17,54 @@ export const Container = styled.section`
   }
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Card = styled.div`
+  padding: 15px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const BodyFooter = styled.div`
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 100px;
+
+  @media (max-width: ${sizes.mobile}) {
+    gap: 40px;
+    margin-top: 25px;
+    flex-direction: column;
+  }
+`;
+
+export const RakingTitle = styled.label`
+  font-size: 25px;
+  font-weight: bold;
+  color: ${colors.yellow};
+`;
+
+export const RakingSubTitle = styled.label``;
+
+export const LabelTitle = styled.label`
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+`;
+
+export const YellowSpan = styled.span`
+  color: ${colors.yellow};
+`;
 
 export const CardContainer = styled.div`
   @media (max-width: ${sizes.mobile}) {
