@@ -42,7 +42,7 @@ export const Landing = () => {
             Nossa Missão é Fazer<br></br> o Seu Telefone Tocar
           </S.MobileTitle>
           <S.MobileSubTitle>
-            Desde 2012 no mercado ajudando escritórios contábeis de toda Angola
+            Desde 2022 no mercado ajudando escritórios contábeis de toda Angola
             a Conquistar Clientes pela Internet.
           </S.MobileSubTitle>
           <S.MobileInfo>Conheça nosso Trabalho!</S.MobileInfo>
