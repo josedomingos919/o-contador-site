@@ -43,7 +43,22 @@ export const Session2 = () => {
           <S.AboutInfo2>Josymar Paixão</S.AboutInfo2>
           <S.AboutInfo3>CEO & Founder</S.AboutInfo3>
         </S.AboutInfo>
-        <S.AboutLogo>e</S.AboutLogo>
+        <S.AboutLogo>
+          <S.ItemsContainer>
+            <S.Item>
+              ANALIZAR
+              <S.ItemSubtitle>{">"} Registrar</S.ItemSubtitle>
+            </S.Item>
+            <S.Item>
+              DEMOSTRAR
+              <S.ItemSubtitle>{">"} Organizar</S.ItemSubtitle>
+            </S.Item>
+            <S.Item>
+              PLANEAR
+              <S.ItemSubtitle>{">"} Conclusão</S.ItemSubtitle>
+            </S.Item>
+          </S.ItemsContainer>
+        </S.AboutLogo>
       </S.AboutContent>
     </S.Container>
   );

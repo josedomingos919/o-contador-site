@@ -16,7 +16,7 @@ export const Footer = () => {
               <S.Link href="#contactos">Contactos</S.Link>
             </S.ListItem>
             <S.ListItem>
-              <S.Link href="sobre">Sobre</S.Link>
+              <S.Link href="#sobre">Sobre</S.Link>
             </S.ListItem>
           </S.List>
         </S.Header>

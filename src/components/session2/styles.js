@@ -14,7 +14,6 @@ export const Container = styled.section`
   font-family: "Montserrat", sans-serif;
 
   @media (max-width: ${sizes.mobile}) {
-    margin-top: 40px;
   }
 `;
 
@@ -145,6 +144,12 @@ export const AboutContent = styled.div`
   max-width: 1280px;
   justify-content: center;
   gap: 30px;
+
+  @media (max-width: ${sizes.mobile}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const AboutImage = styled.img`
@@ -155,12 +160,20 @@ export const AboutImage = styled.img`
 
 export const AboutImageContent = styled.div`
   padding-left: 30px;
+
+  @media (max-width: ${sizes.mobile}) {
+    padding: 0px;
+  }
 `;
 
 export const AboutInfo = styled.div`
   padding-right: 30px;
   max-width: 380px;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    padding: 0px 40px;
+  }
 `;
 
 export const AboutInfo1 = styled.div`
@@ -183,4 +196,46 @@ export const AboutInfo3 = styled.div`
 export const AboutLogo = styled.div`
   flex: 1;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: ${sizes.mobile}) {
+    width: 100%;
+  }
+`;
+
+export const ItemsContainer = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  gap: 50px;
+
+  @media (max-width: ${sizes.mobile}) {
+    gap: 0px;
+    flex-direction: column;
+  }
+`;
+
+export const Item = styled.div`
+  position: relative;
+  background-color: black;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  color: ${colors.yellow};
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: ${sizes.mobile}) {
+    width: 100%;
+    height: 90px;
+    border-radius: unset;
+  }
+`;
+
+export const ItemSubtitle = styled.label`
+  font-size: 10px;
+  margin-top: 5px;
+  letter-spacing: 2px;
 `;
