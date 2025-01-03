@@ -136,3 +136,19 @@ export const LabelServices = styled.label`
   border-radius: 50%;
   margin-left: 35px;
 `;
+
+export const AboutContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const AboutImage = styled.img``;
+
+export const AboutImageContent = styled.div``;
+
+export const AboutInfo = styled.div``;
+
+export const AboutInfo1 = styled.div``;
+
+export const AboutInfo2 = styled.div``;
