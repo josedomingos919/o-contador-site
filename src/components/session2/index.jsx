@@ -40,7 +40,10 @@ export const Session2 = () => {
             financeira e a conformidade fiscal da sua empresa, promovendo
             segurança e eficiência em todas as operações.
           </S.AboutInfo1>
+          <S.AboutInfo2>Josymar Paixão</S.AboutInfo2>
+          <S.AboutInfo3>CEO & Founder</S.AboutInfo3>
         </S.AboutInfo>
+        <S.AboutLogo>e</S.AboutLogo>
       </S.AboutContent>
     </S.Container>
   );

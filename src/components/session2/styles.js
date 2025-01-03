@@ -3,11 +3,12 @@ import { colors } from "../../styles/colors";
 import { sizes } from "../../styles/size";
 
 export const Container = styled.section`
+  padding-top: 50px;
+  background: linear-gradient(to bottom, #af7b3f52, white);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 50px;
   margin-bottom: 50px;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
@@ -138,17 +139,48 @@ export const LabelServices = styled.label`
 `;
 
 export const AboutContent = styled.div`
+  margin-top: 25px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  max-width: 1280px;
+  justify-content: center;
+  gap: 30px;
 `;
 
-export const AboutImage = styled.img``;
+export const AboutImage = styled.img`
+  width: 100px;
+  border-radius: 100%;
+  border: 3px dashed ${colors.yellow};
+`;
 
-export const AboutImageContent = styled.div``;
+export const AboutImageContent = styled.div`
+  padding-left: 30px;
+`;
 
-export const AboutInfo = styled.div``;
+export const AboutInfo = styled.div`
+  padding-right: 30px;
+  max-width: 380px;
+  font-family: "Montserrat", sans-serif;
+`;
 
-export const AboutInfo1 = styled.div``;
+export const AboutInfo1 = styled.div`
+  font-family: "Montserrat", sans-serif;
+`;
 
-export const AboutInfo2 = styled.div``;
+export const AboutInfo2 = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  font-family: "Montserrat", sans-serif;
+`;
+
+export const AboutInfo3 = styled.div`
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+`;
+
+export const AboutLogo = styled.div`
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
+`;
