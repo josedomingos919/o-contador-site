@@ -9,6 +9,7 @@ import {
   Session2,
   CopyRight,
   WhasAppButton,
+  Contact,
 } from "../../components";
 
 export const HomePage = () => {
@@ -19,6 +20,7 @@ export const HomePage = () => {
       <Session1 />
       <Banner />
       <Session2 />
+      <Contact />
       <Footer />
       <CopyRight />
       <WhasAppButton />

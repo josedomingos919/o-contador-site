@@ -6,3 +6,4 @@ export * from "./session1";
 export * from "./session2";
 export * from "./whasAppButton";
 export * from "./banner";
+export * from "./contact";

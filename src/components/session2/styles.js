@@ -167,7 +167,6 @@ export const AboutImageContent = styled.div`
 `;
 
 export const AboutInfo = styled.div`
-  padding-right: 30px;
   max-width: 380px;
   font-family: "Montserrat", sans-serif;
 
@@ -204,6 +203,7 @@ export const AboutLogo = styled.div`
 
 export const ItemsContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
   position: relative;
   flex-direction: row;
   gap: 50px;
