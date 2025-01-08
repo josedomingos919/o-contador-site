@@ -42,16 +42,28 @@ export const Footer = () => {
             </S.AddressLabel>
           </S.BoxAddressAddress>
           <S.BoxAddressSocial>
-            <S.LinkSocial href="https://www.linkedin.com/company/o-contador/">
+            <S.LinkSocial
+              target="_blank"
+              href="https://www.linkedin.com/company/o-contador/"
+            >
               <i class="fa-brands fa-linkedin"></i>
             </S.LinkSocial>
-            <S.LinkSocial href="https://www.facebook.com/share/1CfYtQthQm/?mibextid=wwXIfr">
+            <S.LinkSocial
+              target="_blank"
+              href="https://www.facebook.com/share/1CfYtQthQm/?mibextid=wwXIfr"
+            >
               <i class="fa-brands fa-facebook"></i>
             </S.LinkSocial>
-            <S.LinkSocial href="https://api.whatsapp.com/send/?phone=244926157276&text&type=phone_number&app_absent=0">
+            <S.LinkSocial
+              target="_blank"
+              href="https://api.whatsapp.com/send/?phone=244926157276&text&type=phone_number&app_absent=0"
+            >
               <i class="fa-brands fa-whatsapp"></i>
             </S.LinkSocial>
-            <S.LinkSocial href="https://www.instagram.com/ocontador.ao?igsh=N2licDVhczh5bHlx">
+            <S.LinkSocial
+              target="_blank"
+              href="https://www.instagram.com/ocontador.ao?igsh=N2licDVhczh5bHlx"
+            >
               <i class="fa-brands fa-instagram"></i>
             </S.LinkSocial>
           </S.BoxAddressSocial>
