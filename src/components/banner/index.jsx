@@ -5,10 +5,10 @@ export const Banner = () => {
     <S.Container>
       <S.FundoBlack>
         <S.Title>
-          Assessoria Contábil que dá Suporte<br></br>ao seu crescimento
+          Assessoria contabilística que dá Suporte<br></br>ao seu crescimento
         </S.Title>
         <S.SubTitle>
-          Assessoria contábil tem importância fundamental para o{" "}
+          Assessoria contabilística tem importância fundamental para o{" "}
           <strong>
             sucesso <br></br>dos negócios
           </strong>
