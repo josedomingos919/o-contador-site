@@ -104,11 +104,11 @@ export const CheckboxLabel = styled.input`
     @media (max-width: ${sizes.mobile}) {
       left: 0;
       top: 0;
-      gap: 10px;
-      padding: 10px;
+      font-size: 20px;
+      gap: 2rem;
+      padding: 2rem;
       display: flex;
       margin-top: 55px;
-      padding-left: 1rem;
       position: absolute;
       justify-content: unset;
       flex-direction: column;

@@ -14,14 +14,11 @@ export const Container = styled.section`
   font-family: "Montserrat", sans-serif;
 
   @media (max-width: ${sizes.mobile}) {
+    padding-top: 0px;
   }
 `;
 
 export const CardContainer = styled.div`
-  @media (max-width: ${sizes.mobile}) {
-    margin-top: 30px;
-  }
-
   position: relative;
   display: flex;
   width: 100%;
@@ -32,7 +29,6 @@ export const CardContainer = styled.div`
   gap: 35px;
 
   padding-top: 50px;
-  margin-top: 25px;
 
   & .first-service-card {
     margin-left: 35px;
@@ -95,10 +91,50 @@ export const AboutContent = styled.div`
   max-width: 1280px;
   justify-content: center;
   gap: 30px;
+  justify-content: space-between;
 
   @media (max-width: ${sizes.mobile}) {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
+`;
+
+export const CardContact = styled.div`
+  border: 1px solid ${colors.yellow};
+  border-radius: 10px;
+  padding: 17px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  @media (max-width: ${sizes.mobile}) {
+    margin: 0px 25px;
+    flex: 1;
+  }
+`;
+
+export const CardContactIconSide = styled.div``;
+
+export const CardContactContentSide = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContactTitle = styled.label`
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+export const IconCard = styled.div`
+  padding: 15px 17px;
+  border-radius: 10px;
+  background-color: ${colors.yellow};
+  color: ${colors.white};
+  font-size: 16px;
+`;
+
+export const ContactContent = styled.label`
+  font-size: 16px;
 `;

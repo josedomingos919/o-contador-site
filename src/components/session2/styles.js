@@ -14,6 +14,7 @@ export const Container = styled.section`
   font-family: "Montserrat", sans-serif;
 
   @media (max-width: ${sizes.mobile}) {
+    margin-bottom: 25px;
   }
 `;
 
