@@ -9,12 +9,13 @@ export const Container = styled.section`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
 
   @media (max-width: ${sizes.mobile}) {
     padding-top: 0px;
+    padding-bottom: 50px;
   }
 `;
 
