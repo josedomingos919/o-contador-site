@@ -34,10 +34,10 @@ export const Session2 = () => {
         <S.AboutInfo>
           <S.AboutInfo1>
             Somos uma empresa especializada em contabilidade e auditoria,
-            comprometida em oferecer soluções personalizadas para negócios de
-            todos os portes. Com uma equipe de profissionais altamente
+            comprometida em oferecer soluções personalizadas para empresas de
+            todos os tamanhos. Com uma equipa de profissionais altamente
             qualificados e experientes, trabalhamos para garantir a saúde
-            financeira e a conformidade fiscal da sua empresa, promovendo
+            financeira e a conformidade fiscal do seu negócio, promovendo
             segurança e eficiência em todas as operações.
           </S.AboutInfo1>
           <S.AboutInfo2>Josemar Paixão</S.AboutInfo2>
