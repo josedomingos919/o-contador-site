@@ -7,7 +7,7 @@ export const Session2 = () => {
     <S.Container id="serviços">
       <S.Content>
         <S.LabelTitle>
-          Confira nos<S.YellowSpan>sos Ranking</S.YellowSpan>
+          Confira os nos<S.YellowSpan>sos Rankings</S.YellowSpan>
         </S.LabelTitle>
         <S.BodyFooter>
           <S.Card>
