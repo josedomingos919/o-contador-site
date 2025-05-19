@@ -42,6 +42,8 @@ export const Session2 = () => {
           <S.AboutInfo3>CEO & Founder</S.AboutInfo3>
         </S.AboutInfo>
         <S.AboutLogo>
+          {/*
+          TODO: Espera sugestão da equipe deles
           <S.ItemsContainer>
             <S.Item>
               ANALIZAR
@@ -55,7 +57,7 @@ export const Session2 = () => {
               PLANEAR
               <S.ItemSubtitle>{">"} Conclusão</S.ItemSubtitle>
             </S.Item>
-          </S.ItemsContainer>
+          </S.ItemsContainer> */}
         </S.AboutLogo>
       </S.AboutContent>
     </S.Container>
