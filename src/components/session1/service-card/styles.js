@@ -40,6 +40,7 @@ export const Text = styled.label`
   font-size: 16px;
   color: ${colors.iconDark};
   margin-bottom: 15px;
+  text-align: justify;
 `;
 
 export const Icon = styled.div`

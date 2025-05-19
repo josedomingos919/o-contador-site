@@ -174,6 +174,7 @@ export const AboutInfo = styled.div`
 
 export const AboutInfo1 = styled.div`
   font-family: "Montserrat", sans-serif;
+  text-align: justify;
 `;
 
 export const AboutInfo2 = styled.div`
