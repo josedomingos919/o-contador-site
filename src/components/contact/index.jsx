@@ -36,7 +36,7 @@ export const Contact = () => {
             </S.IconCard>
           </S.CardContactIconSide>
           <S.CardContactContentSide>
-            <S.ContactTitle>Endereço Físico Para Contacto</S.ContactTitle>
+            <S.ContactTitle>Endereço</S.ContactTitle>
             <S.ContactContent>
               Avenida 21 de Janeiro, Rua 1, Casa Nº 2
             </S.ContactContent>
