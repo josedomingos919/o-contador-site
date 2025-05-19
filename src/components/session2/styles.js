@@ -63,10 +63,6 @@ export const LabelTitle = styled.label`
   font-weight: bold;
 `;
 
-export const YellowSpan = styled.span`
-  color: ${colors.yellow};
-`;
-
 export const CardContainer = styled.div`
   @media (max-width: ${sizes.mobile}) {
     margin-top: 30px;

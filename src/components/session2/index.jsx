@@ -6,9 +6,7 @@ export const Session2 = () => {
   return (
     <S.Container id="serviços">
       <S.Content>
-        <S.LabelTitle>
-          Confira os nos<S.YellowSpan>sos Rankings</S.YellowSpan>
-        </S.LabelTitle>
+        <S.LabelTitle>Confira os nos sos Rankings</S.LabelTitle>
         <S.BodyFooter>
           <S.Card>
             <S.RakingTitle>80+</S.RakingTitle>
@@ -20,7 +18,7 @@ export const Session2 = () => {
           </S.Card>
           <S.Card>
             <S.RakingTitle>99+</S.RakingTitle>
-            <S.RakingSubTitle>Feedback Positivos</S.RakingSubTitle>
+            <S.RakingSubTitle>Feedbacks Positivos</S.RakingSubTitle>
           </S.Card>
         </S.BodyFooter>
       </S.Content>
