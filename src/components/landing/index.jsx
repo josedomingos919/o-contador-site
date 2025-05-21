@@ -8,7 +8,7 @@ export const Landing = () => {
   return (
     <S.Container>
       <S.CircleContainer>
-        <S.Circle>
+        <S.Circle href="/info/mission">
           <S.Image>
             <img src={missaoPng} />
           </S.Image>
@@ -17,7 +17,7 @@ export const Landing = () => {
             <i class="fa-solid fa-arrow-right"></i>
           </S.Link>
         </S.Circle>
-        <S.Circle>
+        <S.Circle href="/info/vision">
           <S.Image>
             <img src={visaoPng} />
           </S.Image>
@@ -26,7 +26,7 @@ export const Landing = () => {
             <i class="fa-solid fa-arrow-right"></i>
           </S.Link>
         </S.Circle>
-        <S.Circle>
+        <S.Circle href="/info/value">
           <S.Image>
             <img src={valorPng} />
           </S.Image>

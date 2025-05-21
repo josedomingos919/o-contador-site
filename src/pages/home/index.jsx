@@ -11,8 +11,22 @@ import {
   WhasAppButton,
   Contact,
 } from "../../components";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 
 export const HomePage = () => {
+  const { hash } = useLocation();
+  console.log(useLocation());
+  useEffect(() => {
+    if (hash) {
+      console.log(hash);
+      const el = document.querySelector("q");
+      if (!el) {
+        // el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
+
   return (
     <S.Container>
       <Header />

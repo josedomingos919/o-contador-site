@@ -34,7 +34,7 @@ export const CircleContainer = styled.div`
   }
 `;
 
-export const Circle = styled.div`
+export const Circle = styled.a`
   width: 200px;
   height: 170px;
   border-top-left-radius: 150px;
@@ -52,6 +52,8 @@ export const Circle = styled.div`
   background: linear-gradient(to bottom, #af7b3f52, white);
   gap: 10px;
   padding-top: 30px;
+  color: black;
+  text-decoration: none;
 `;
 
 export const Label = styled.div`

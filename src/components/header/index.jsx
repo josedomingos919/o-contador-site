@@ -2,7 +2,11 @@ import * as S from "./styles";
 
 import logo from "../../assets/logo2.png";
 
+import { useControlLink } from "../../hooks/useControlLink";
+
 export const Header = () => {
+  const { getUrlByPage } = useControlLink();
+
   return (
     <S.Container>
       <S.Content>
@@ -13,13 +17,13 @@ export const Header = () => {
         </S.LabelHaburguer>
         <S.List>
           <S.ListItem>
-            <S.Link href="#serviços">Serviços</S.Link>
+            <S.Link href={getUrlByPage("#servicos")}>Serviços</S.Link>
           </S.ListItem>
           <S.ListItem>
-            <S.Link href="#sobre">Sobre</S.Link>
+            <S.Link href={getUrlByPage("#sobre")}>Sobre</S.Link>
           </S.ListItem>
           <S.ListItem>
-            <S.Link href="#contactos">Contactos</S.Link>
+            <S.Link href={getUrlByPage("#contactos")}>Contactos</S.Link>
           </S.ListItem>
         </S.List>
         <S.ImageLogo src={logo} />

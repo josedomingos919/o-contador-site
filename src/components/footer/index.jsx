@@ -13,7 +13,7 @@ export const Footer = () => {
               <S.Link href="#contactos">Contactos</S.Link>
             </S.ListItem>
             <S.ListItem>
-              <S.Link href="#serviços">Serviços</S.Link>
+              <S.Link href="#servicos">Serviços</S.Link>
             </S.ListItem>
             <S.ListItem>
               <S.Link href="#sobre">Sobre</S.Link>

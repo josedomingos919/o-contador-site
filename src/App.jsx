@@ -1,6 +1,6 @@
 import "./styles/index.css";
 
-import { HomePage } from "./pages";
+import { HomePage, Info } from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index path="/" element={<HomePage />} />
+        <Route index path="/info/:type" element={<Info />} />
       </Routes>
     </BrowserRouter>
   );

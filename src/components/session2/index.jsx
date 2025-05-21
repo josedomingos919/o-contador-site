@@ -4,7 +4,7 @@ import image from "../../assets/CEO.png";
 
 export const Session2 = () => {
   return (
-    <S.Container id="serviços">
+    <S.Container id="servicos">
       <S.Content>
         <S.LabelTitle>Confira os nos sos Rankings</S.LabelTitle>
         <S.BodyFooter>
