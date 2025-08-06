@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-import image from "../../assets/CEO.png";
+import image from "../../assets/josy.png";
 
 export const Session2 = () => {
   return (

@@ -150,9 +150,9 @@ export const AboutContent = styled.div`
 `;
 
 export const AboutImage = styled.img`
-  width: 100px;
-  border-radius: 100%;
-  border: 3px dashed ${colors.yellow};
+  width: 200px;
+  border-radius: 20px;
+  border: 3px solid ${colors.yellow};
 `;
 
 export const AboutImageContent = styled.div`
