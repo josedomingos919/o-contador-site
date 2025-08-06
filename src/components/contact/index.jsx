@@ -26,7 +26,7 @@ export const Contact = () => {
           </S.CardContactIconSide>
           <S.CardContactContentSide>
             <S.ContactTitle>Email Contacto Geral</S.ContactTitle>
-            <S.ContactContent>geral@ocontador.ao</S.ContactContent>
+            <S.ContactContent>ocontador@outlook.pt</S.ContactContent>
           </S.CardContactContentSide>
         </S.CardContact>
         <S.CardContact>
@@ -37,9 +37,7 @@ export const Contact = () => {
           </S.CardContactIconSide>
           <S.CardContactContentSide>
             <S.ContactTitle>Endereço</S.ContactTitle>
-            <S.ContactContent>
-              Avenida 21 de Janeiro, Rua 1, Casa Nº 2
-            </S.ContactContent>
+            <S.ContactContent>Cassenda Rua 8</S.ContactContent>
           </S.CardContactContentSide>
         </S.CardContact>
       </S.AboutContent>
