@@ -18,6 +18,9 @@ export const Footer = () => {
             <S.ListItem>
               <S.Link href="#sobre">Sobre</S.Link>
             </S.ListItem>
+            <S.ListItem>
+              <S.Link href="/singin">Admin</S.Link>
+            </S.ListItem>
           </S.List>
         </S.Header>
         <S.WhasAppBox>
