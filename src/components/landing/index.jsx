@@ -30,7 +30,7 @@ export const Landing = () => {
           <S.Image>
             <img src={valorPng} />
           </S.Image>
-          <S.Label>Valor</S.Label>
+          <S.Label>Valores</S.Label>
           <S.Link>
             <i class="fa-solid fa-arrow-right"></i>
           </S.Link>
