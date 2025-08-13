@@ -5,25 +5,22 @@ import {
   Footer,
   Header,
   Landing,
+  Contact,
   Session1,
   Session2,
   CopyRight,
   WhasAppButton,
-  Contact,
 } from "../../components";
-import { useLocation } from "react-router";
 import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 export const HomePage = () => {
   const { hash } = useLocation();
-  console.log(useLocation());
+
   useEffect(() => {
     if (hash) {
-      console.log(hash);
-      const el = document.querySelector("q");
-      if (!el) {
-        // el.scrollIntoView({ behavior: "smooth" });
-      }
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
   }, [hash]);
 

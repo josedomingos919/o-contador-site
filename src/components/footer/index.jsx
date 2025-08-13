@@ -2,7 +2,11 @@ import * as S from "./styles";
 
 import logo from "../../assets/logo2.png";
 
+import { useControlLink } from "../../hooks/useControlLink";
+
 export const Footer = () => {
+  const { getUrlByPage } = useControlLink();
+
   return (
     <S.Container>
       <S.Content>
@@ -10,16 +14,16 @@ export const Footer = () => {
           <S.ImageLogo src={logo} />
           <S.List>
             <S.ListItem>
-              <S.Link href="#contactos">Contactos</S.Link>
+              <S.Link href={getUrlByPage("#contactos")}>Contactos</S.Link>
             </S.ListItem>
             <S.ListItem>
-              <S.Link href="#servicos">Serviços</S.Link>
+              <S.Link href={getUrlByPage("#servicos")}>Serviços</S.Link>
             </S.ListItem>
             <S.ListItem>
-              <S.Link href="#sobre">Sobre</S.Link>
+              <S.Link href={getUrlByPage("#sobre")}>Sobre</S.Link>
             </S.ListItem>
             <S.ListItem>
-              <S.Link href="/singin">Admin</S.Link>
+              <S.Link href={getUrlByPage("/singin")}>Login</S.Link>
             </S.ListItem>
           </S.List>
         </S.Header>

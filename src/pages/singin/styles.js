@@ -77,6 +77,7 @@ export const Input = styled.input`
 
 export const ButtonTile = styled.label`
   color: white;
+  cursor: pointer;
   font-size: 15px;
   font-family: Montserrat, sans-serif;
 `;
@@ -85,6 +86,15 @@ export const Button = styled.button`
   width: 100%;
   height: 47px;
   padding: 10px;
+  cursor: pointer;
   border-radius: 5px;
   background-color: #af7b3f;
+`;
+
+export const Link = styled.a`
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+  text-decoration: underline;
+  font-family: Montserrat, sans-serif;
 `;

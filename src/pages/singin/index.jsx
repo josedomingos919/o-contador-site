@@ -32,6 +32,7 @@ export const SingInPage = () => {
           <S.Button style={{ marginTop: 30 }}>
             <S.ButtonTile>Entrar</S.ButtonTile>
           </S.Button>
+          <S.Link>Esqueceu a senha!</S.Link>
         </S.BoxDiv>
       </S.ContainerLogin>
     </S.Container>
