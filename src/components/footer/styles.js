@@ -9,6 +9,12 @@ export const Container = styled.footer`
   background-color: ${colors.primary};
   background-image: url(/footer.png);
   background-repeat: no-repeat;
+
+  @media (max-width: ${sizes.mobile}) {
+    .hide-mobile {
+      display: none;
+    }
+  }
 `;
 
 export const Content = styled.div`

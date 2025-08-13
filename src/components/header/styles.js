@@ -18,6 +18,10 @@ export const Container = styled.header`
 
   @media (max-width: ${sizes.mobile}) {
     height: 60px !important;
+
+    .hide-mobile {
+      display: none;
+    }
   }
 `;
 

@@ -22,7 +22,7 @@ export const Footer = () => {
             <S.ListItem>
               <S.Link href={getUrlByPage("#sobre")}>Sobre</S.Link>
             </S.ListItem>
-            <S.ListItem>
+            <S.ListItem className="hide-mobile">
               <S.Link href={getUrlByPage("/singin")}>Login</S.Link>
             </S.ListItem>
           </S.List>
