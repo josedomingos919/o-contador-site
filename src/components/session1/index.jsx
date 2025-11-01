@@ -7,10 +7,12 @@ import recursosHumanosPng from "../../assets/recursos-humanos.png";
 import analitycsPng from "../../assets/analitycs.png";
 
 import * as S from "./styles";
+import ParticleBackground from "../particlebackground";
 
 export const Session1 = () => {
   return (
     <S.Container id="servicos">
+      <ParticleBackground key="modal_234" color="#eccdaa78" />
       <S.H1>O seu negócio começa aqui</S.H1>
       <S.Content>
         Somos o parceiro ideal para<br></br>

@@ -1,8 +1,11 @@
+import ParticleBackground from "../particlebackground";
 import * as S from "./styles";
 
 export const Contact = () => {
   return (
     <S.Container id="contactos">
+      <ParticleBackground key="modal_2324" color="#eccdaa78" />
+
       <S.CardContainer id="sobre">
         <S.LabelServices>Contactos</S.LabelServices>
       </S.CardContainer>

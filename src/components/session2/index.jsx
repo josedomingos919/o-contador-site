@@ -1,12 +1,13 @@
 import * as S from "./styles";
 
 import image from "../../assets/josy.png";
+import ParticleBackground from "../particlebackground";
 
 export const Session2 = () => {
   return (
     <S.Container id="servicos">
       <S.Content>
-        <S.LabelTitle>Confira os nos sos Rankings</S.LabelTitle>
+        <S.LabelTitle>Confira os nossos Rankings</S.LabelTitle>
         <S.BodyFooter>
           <S.Card>
             <S.RakingTitle>80+</S.RakingTitle>

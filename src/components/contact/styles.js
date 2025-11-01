@@ -12,6 +12,7 @@ export const Container = styled.section`
   padding-bottom: 80px;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
+  position: relative;
 
   @media (max-width: ${sizes.mobile}) {
     padding-top: 0px;
