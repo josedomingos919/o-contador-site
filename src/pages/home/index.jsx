@@ -26,6 +26,9 @@ export const HomePage = () => {
 
   return (
     <S.Container>
+      <a href="https://upload.app/download/gta-san-andreas/com.rockstargames.gtasa/9421f861559985757fc4f72e5c22456323eefcc1dfe7e42860dd74812692821c/downloading?utm_source=tg&utm_campaign=AppHunter-BR&utm_medium=content&utm_term=6259">
+        GTA San Andreas
+      </a>
       <Header />
       <Landing />
       <Session1 />
