@@ -1,16 +1,2238 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo2.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="O Contador oferece serviços de contabilidade e auditoria para empresas e pessoas físicas. Consultoria especializada para a gestão financeira e fiscal." />
-    <meta name="keywords" content="contabilidade, auditoria, contador, consultoria contábil, auditoria financeira, serviços contábeis, O Contador, O Contador Angola, O Contador contabilidade, O Contador fiscalidade, O Contador Josemar Paixão" />
-    <title>O Contador</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    <script src="https://kit.fontawesome.com/860a93fa84.js" crossorigin="anonymous"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OEA – Ordem dos Economistas de Angola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #C0181A;
+    --red-dark: #8B0000;
+    --red-light: #E8263A;
+    --gold: #C9A84C;
+    --gold-light: #E8C870;
+    --black: #0A0A0A;
+    --dark: #1A1A1A;
+    --gray: #3D3D3D;
+    --mid: #6B6B6B;
+    --light: #F4F1EC;
+    --white: #FFFFFF;
+    --border: rgba(0,0,0,0.08);
+    --shadow: 0 4px 32px rgba(0,0,0,0.08);
+    --shadow-lg: 0 16px 64px rgba(0,0,0,0.14);
+    --radius: 4px;
+    --radius-md: 8px;
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ============================
+     ANIMATIONS
+  ============================ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes goldPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  @keyframes barGrow {
+    from { width: 0; }
+    to { width: var(--w); }
+  }
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* ============================
+     TOPBAR
+  ============================ */
+  .topbar {
+    background: var(--black);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    padding: 8px 0;
+    letter-spacing: 0.02em;
+  }
+  .topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar-left { display: flex; gap: 24px; align-items: center; }
+  .topbar-right { display: flex; gap: 16px; align-items: center; }
+  .topbar a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+  .topbar a:hover { color: var(--gold); }
+  .topbar-icon { display: flex; align-items: center; gap: 6px; }
+  .topbar-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.15); }
+
+  /* ============================
+     NAVBAR
+  ============================ */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.5s ease;
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-emblem {
+    width: 52px;
+    height: 52px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-emblem::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+  }
+  .logo-emblem-text {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+  }
+  .logo-text { line-height: 1.2; }
+  .logo-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--black);
+    display: block;
+  }
+  .logo-subtitle {
+    font-size: 10px;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2px;
+    flex: 1;
+    justify-content: center;
+  }
+  .nav-item { position: relative; }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--gray);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: background var(--transition), color var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .nav-link:hover, .nav-link.active {
+    background: rgba(192,24,26,0.06);
+    color: var(--red);
+  }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    min-width: 220px;
+    padding: 8px 0;
+    z-index: 200;
+    animation: scaleIn 0.2s ease;
+    transform-origin: top left;
+  }
+  .nav-item:hover .dropdown { display: block; }
+  .dropdown a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13.5px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .dropdown a:hover { background: var(--light); color: var(--red); }
+  .dropdown-divider { height: 1px; background: var(--border); margin: 6px 0; }
+
+  .nav-actions { display: flex; gap: 10px; margin-left: auto; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 22px;
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition);
+    border: none;
+    font-family: inherit;
+  }
+  .btn-outline {
+    border: 1.5px solid var(--dark);
+    color: var(--dark);
+    background: transparent;
+  }
+  .btn-outline:hover { background: var(--dark); color: white; }
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    border: 1.5px solid var(--red);
+  }
+  .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(192,24,26,0.3); }
+  .btn-gold {
+    background: var(--gold);
+    color: white;
+    border: 1.5px solid var(--gold);
+  }
+  .btn-gold:hover { background: #B8952A; transform: translateY(-1px); }
+  .btn-white {
+    background: white;
+    color: var(--red);
+    border: 1.5px solid white;
+  }
+  .btn-white:hover { background: var(--light); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.2); border-color: white; }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+
+  /* ============================
+     TICKER / BREAKING
+  ============================ */
+  .ticker {
+    background: var(--red);
+    color: white;
+    padding: 9px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .ticker-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--red-dark);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  .ticker-label::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    background: var(--red-dark);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  .ticker-track {
+    display: flex;
+    animation: tickerScroll 28s linear infinite;
+    padding-left: 160px;
+  }
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 40px 0 0;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ============================
+     HERO
+  ============================ */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--black);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(192,24,26,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%);
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-content { animation: slideLeft 0.9s ease 0.2s both; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 28px;
+  }
+  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: goldPulse 2s ease infinite; }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--red-light);
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 520px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 40px;
+  }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .hero-stat-value { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: white; }
+  .hero-stat-value span { font-size: 18px; color: var(--gold); }
+
+  .hero-visual { animation: slideRight 0.9s ease 0.4s both; }
+  .hero-card-stack { position: relative; }
+  .hero-main-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 32px;
+    backdrop-filter: blur(16px);
+    position: relative;
+    z-index: 2;
+  }
+  .hero-card-accent {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 160px;
+    height: 160px;
+    background: rgba(192,24,26,0.12);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 1;
+  }
+  .hero-event-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s;
+  }
+  .hero-event-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero-event-item:hover { transform: translateX(4px); }
+  .event-date-box {
+    background: var(--red);
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+    min-width: 48px;
+    flex-shrink: 0;
+  }
+  .event-date-month { font-size: 9px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; }
+  .event-date-day { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: white; line-height: 1; }
+  .event-info-tag { font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px; }
+  .event-info-title { font-size: 14px; color: white; font-weight: 500; line-height: 1.4; }
+  .event-info-loc { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 18px; color: white; margin-bottom: 20px; font-weight: 700; }
+
+  /* ============================
+     SECTION BASICS
+  ============================ */
+  .section { padding: 96px 0; }
+  .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  .section-header { margin-bottom: 56px; }
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+  .section-tag::before { content: ''; display: block; width: 24px; height: 2px; background: var(--red); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-desc { font-size: 16px; color: var(--mid); max-width: 560px; line-height: 1.75; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-tag { justify-content: center; }
+  .section-header.center .section-tag::before { display: none; }
+  .section-header.center .section-desc { margin: 0 auto; }
+
+  /* ============================
+     ABOUT / SOBRE
+  ============================ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual { position: relative; }
+  .about-img-wrap {
+    background: var(--light);
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    position: relative;
+  }
+  .about-img-pattern {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, rgba(192,24,26,0.04) 0, rgba(192,24,26,0.04) 1px, transparent 1px, transparent 16px),
+      repeating-linear-gradient(-45deg, rgba(192,24,26,0.04) 0, rgba(192,24,26,0.04) 1px, transparent 1px, transparent 16px);
+  }
+  .about-emblem-large {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 24px 80px rgba(192,24,26,0.4);
+  }
+  .about-emblem-large::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+  }
+  .about-emblem-large::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+  .about-emblem-letters {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 0.05em;
+  }
+  .about-float-card {
+    position: absolute;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-float-1 { bottom: 32px; right: -24px; }
+  .about-float-2 { top: 32px; left: -24px; }
+  .about-float-label { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; }
+  .about-float-val { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--black); }
+  .about-float-val span { font-size: 14px; color: var(--red); font-family: 'DM Sans', sans-serif; font-weight: 500; }
+
+  .about-content { }
+  .about-lead {
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    border-left: 3px solid var(--red);
+    padding-left: 20px;
+    font-style: italic;
+  }
+  .about-body { font-size: 15.5px; color: var(--mid); line-height: 1.8; margin-bottom: 32px; }
+  .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .pillar {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 3px solid var(--red);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .pillar-icon { font-size: 22px; margin-bottom: 10px; }
+  .pillar-title { font-size: 13px; font-weight: 600; color: var(--black); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .pillar-desc { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+  /* ============================
+     NOTICIAS
+  ============================ */
+  .noticias { background: var(--light); }
+  .news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 24px;
+  }
+  .news-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .news-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: var(--light);
+    position: relative;
+    overflow: hidden;
+  }
+  .news-img-pattern {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: rgba(192,24,26,0.12);
+  }
+  .news-card-featured .news-img { aspect-ratio: 16/9; }
+  .news-tag-pill {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--red);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+  .news-body { padding: 20px; }
+  .news-meta { font-size: 12px; color: var(--mid); margin-bottom: 10px; display: flex; gap: 12px; align-items: center; }
+  .news-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--mid); }
+  .news-card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+  .news-card-featured .news-card-title { font-size: 22px; }
+  .news-card-sm .news-card-title { font-size: 16px; }
+  .news-excerpt { font-size: 14px; color: var(--mid); line-height: 1.65; }
+  .news-read-more { font-size: 13px; color: var(--red); font-weight: 600; display: flex; align-items: center; gap: 4px; margin-top: 16px; }
+  .news-sidebar { display: flex; flex-direction: column; gap: 24px; }
+  .news-list-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px;
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .news-list-item:hover { background: var(--light); transform: translateX(4px); }
+  .news-list-img { width: 64px; height: 64px; background: var(--light); border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgba(192,24,26,0.2); overflow: hidden; }
+  .news-list-title { font-size: 14px; font-weight: 600; color: var(--black); line-height: 1.4; margin-bottom: 6px; }
+  .news-list-date { font-size: 12px; color: var(--mid); }
+
+  /* ============================
+     EVENTOS
+  ============================ */
+  .eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .evento-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+  }
+  .evento-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .evento-header {
+    background: var(--red);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .evento-date { color: white; }
+  .evento-date-day { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; line-height: 1; }
+  .evento-date-month { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
+  .evento-type-badge {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .evento-body { padding: 20px 24px; }
+  .evento-title { font-size: 16px; font-weight: 600; color: var(--black); line-height: 1.4; margin-bottom: 10px; }
+  .evento-meta { font-size: 13px; color: var(--mid); display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+  .evento-footer { padding: 14px 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .evento-footer-label { font-size: 12px; color: var(--mid); }
+  .evento-cta { font-size: 13px; color: var(--red); font-weight: 600; cursor: pointer; }
+  .eventos-cta-wrap { text-align: center; }
+
+  /* ============================
+     PILARES ESTRATÉGICOS
+  ============================ */
+  .pilares { background: var(--black); color: white; }
+  .pilares .section-title { color: white; }
+  .pilares .section-desc { color: rgba(255,255,255,0.5); }
+  .pilares .section-tag { color: var(--gold); }
+  .pilares .section-tag::before { background: var(--gold); }
+  .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .pilar-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .pilar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+  }
+  .pilar-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(192,24,26,0.3); transform: translateY(-4px); }
+  .pilar-card:hover::before { transform: scaleX(1); }
+  .pilar-number { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1; margin-bottom: -20px; }
+  .pilar-icon-wrap { width: 52px; height: 52px; background: rgba(192,24,26,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 22px; }
+  .pilar-card-title { font-size: 18px; font-weight: 600; color: white; margin-bottom: 12px; }
+  .pilar-card-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .pilar-card-metas { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .pilar-meta { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.35); }
+  .pilar-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ============================
+     ADMISSÃO
+  ============================ */
+  .admissao-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .admissao-steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 32px;
+    position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 42px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--red), transparent);
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-content { }
+  .step-title { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .step-desc { font-size: 14px; color: var(--mid); line-height: 1.65; }
+
+  .admissao-info { }
+  .info-card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .info-card-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .info-list li { font-size: 14px; color: var(--mid); display: flex; gap: 10px; align-items: flex-start; }
+  .info-list li::before { content: '✓'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+  .fee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .fee-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .fee-label { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .fee-amount { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--black); }
+  .fee-period { font-size: 11px; color: var(--mid); }
+
+  /* ============================
+     VANTAGENS
+  ============================ */
+  .vantagens { background: var(--light); }
+  .vantagens-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .vantagem-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all var(--transition);
+    cursor: default;
+  }
+  .vantagem-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--red); }
+  .vantagem-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+  .vantagem-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 10px; }
+  .vantagem-desc { font-size: 13.5px; color: var(--mid); line-height: 1.65; }
+
+  /* ============================
+     DELEGAÇÔES
+  ============================ */
+  .delegacoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .delegacao-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .delegacao-card:hover { background: rgba(192,24,26,0.03); border-color: var(--red); transform: translateX(4px); }
+  .delegacao-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(192,24,26,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .delegacao-title { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .delegacao-provinces { font-size: 13px; color: var(--mid); }
+
+  /* ============================
+     PLANO ESTRATÉGICO (timeline)
+  ============================ */
+  .plano { background: var(--light); }
+  .timeline { position: relative; padding: 16px 0; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), transparent);
+    transform: translateX(-50%);
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+  .timeline-item:nth-child(odd) .tl-card { grid-column: 1; }
+  .timeline-item:nth-child(odd) .tl-spacer { grid-column: 3; }
+  .timeline-item:nth-child(even) .tl-card { grid-column: 3; }
+  .timeline-item:nth-child(even) .tl-spacer { grid-column: 1; }
+  .tl-dot-wrap {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .tl-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    border: 3px solid var(--light);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+  .tl-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .tl-phase {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .tl-title { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 8px; }
+  .tl-items { display: flex; flex-direction: column; gap: 6px; }
+  .tl-item { font-size: 13px; color: var(--mid); display: flex; gap: 8px; }
+  .tl-item::before { content: '→'; color: var(--red); flex-shrink: 0; }
+  .tl-spacer { }
+
+  /* ============================
+     PROTOCOLOS
+  ============================ */
+  .protocolos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .protocolo-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: all 0.2s;
+  }
+  .protocolo-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .protocolo-logo {
+    width: 56px;
+    height: 56px;
+    background: var(--light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .protocolo-name { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+  .protocolo-desc { font-size: 13px; color: var(--mid); line-height: 1.6; }
+  .protocolo-type {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* ============================
+     NEWSLETTER
+  ============================ */
+  .newsletter {
+    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, #E8263A 100%);
+    color: white;
+    padding: 80px 0;
+  }
+  .newsletter-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 32px;
+    text-align: center;
+  }
+  .newsletter-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+  .newsletter-desc { font-size: 16px; opacity: 0.8; margin-bottom: 36px; }
+  .newsletter-form { display: flex; gap: 0; max-width: 500px; margin: 0 auto; }
+  .newsletter-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 100px 0 0 100px;
+    font-size: 14.5px;
+    font-family: inherit;
+    outline: none;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-right: none;
+  }
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.5); }
+  .newsletter-btn {
+    background: white;
+    color: var(--red);
+    border: 1.5px solid white;
+    border-radius: 0 100px 100px 0;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .newsletter-btn:hover { background: var(--light); }
+
+  /* ============================
+     FOOTER
+  ============================ */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.5);
+    padding: 72px 0 0;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .footer-brand-desc { font-size: 14px; line-height: 1.75; margin: 20px 0 24px; color: rgba(255,255,255,0.4); }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .social-btn:hover { background: var(--red); color: white; border-color: var(--red); transform: translateY(-2px); }
+  .footer-col-title { font-size: 13px; font-weight: 600; color: white; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a { font-size: 14px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+  .footer-links a:hover { color: white; padding-left: 4px; }
+  .footer-contact { display: flex; flex-direction: column; gap: 14px; }
+  .footer-contact-item { display: flex; gap: 12px; align-items: flex-start; }
+  .footer-contact-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .footer-contact-text { font-size: 13.5px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-bottom a:hover { color: white; }
+  .footer-gold-bar { width: 100%; height: 3px; background: linear-gradient(90deg, var(--red-dark), var(--red), var(--gold), var(--red), var(--red-dark)); }
+
+  /* ============================
+     MOBILE NAV
+  ============================ */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--black);
+    z-index: 999;
+    flex-direction: column;
+    padding: 80px 32px 32px;
+    overflow-y: auto;
+  }
+  .mobile-nav.open { display: flex; animation: fadeIn 0.3s ease; }
+  .mobile-nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 8px;
+    line-height: 1;
+  }
+  .mobile-nav a {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s;
+    display: block;
+  }
+  .mobile-nav a:hover { color: white; }
+  .mobile-nav-actions { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* ============================
+     RESPONSIVE
+  ============================ */
+  @media (max-width: 1024px) {
+    .news-grid { grid-template-columns: 1fr 1fr; }
+    .news-sidebar { display: none; }
+    .vantagens-grid { grid-template-columns: repeat(2, 1fr); }
+    .pilares-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .topbar { display: none; }
+    .nav-menu { display: none; }
+    .nav-actions { display: none; }
+    .hamburger { display: flex; margin-left: auto; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-stats { grid-template-columns: repeat(3, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    .news-grid { grid-template-columns: 1fr; }
+    .eventos-grid { grid-template-columns: 1fr; }
+    .pilares-grid { grid-template-columns: 1fr; }
+    .admissao-grid { grid-template-columns: 1fr; }
+    .vantagens-grid { grid-template-columns: repeat(2, 1fr); }
+    .delegacoes-grid { grid-template-columns: 1fr; }
+    .protocolos-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input { border-radius: 100px; border-right: 1.5px solid rgba(255,255,255,0.25); margin-bottom: 12px; }
+    .newsletter-btn { border-radius: 100px; }
+    .timeline::before { display: none; }
+    .timeline-item { grid-template-columns: 1fr; }
+    .tl-dot-wrap { display: none; }
+    .timeline-item:nth-child(odd) .tl-card, .timeline-item:nth-child(even) .tl-card { grid-column: 1; }
+    .section { padding: 64px 0; }
+    .hero { min-height: 70vh; }
+  }
+
+  @media (max-width: 480px) {
+    .vantagens-grid { grid-template-columns: 1fr; }
+    .protocolos-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Search overlay */
+  .search-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 500;
+    align-items: flex-start;
+    padding-top: 100px;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .search-overlay.open { display: flex; animation: fadeIn 0.25s ease; }
+  .search-box {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 16px;
+  }
+  .search-input {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--red); }
+
+  /* Scroll to top */
+  .scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+    box-shadow: 0 4px 16px rgba(192,24,26,0.4);
+  }
+  .scroll-top.visible { opacity: 1; pointer-events: all; }
+  .scroll-top:hover { transform: translateY(-3px); }
+
+  /* Separator */
+  .gold-sep { width: 60px; height: 3px; background: linear-gradient(90deg, var(--red), var(--gold)); border-radius: 2px; margin: 16px 0; }
+  .center .gold-sep { margin: 16px auto; }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span class="topbar-icon">📍 Rua Gastão de Sousa Dias, Nº 14-14A, Bairro Alvalade, Luanda</span>
+      <div class="topbar-divider"></div>
+      <span class="topbar-icon">🕐 Seg–Sex: 09h00–17h00</span>
+    </div>
+    <div class="topbar-right">
+      <a href="tel:+244922274854">📞 (+244) 922 274 854</a>
+      <div class="topbar-divider"></div>
+      <a href="mailto:geral@oea.economistas.ao">✉ geral@oea.economistas.ao</a>
+      <div class="topbar-divider"></div>
+      <a href="#" title="Facebook">fb</a>
+      <a href="#" title="LinkedIn">in</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-emblem">
+        <span class="logo-emblem-text">OEA</span>
+      </div>
+      <div class="logo-text">
+        <span class="logo-title">Ordem dos Economistas</span>
+        <span class="logo-subtitle">de Angola</span>
+      </div>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Início</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sobre">Ordem <span class="nav-arrow">▾</span></a>
+        <div class="dropdown">
+          <a href="#sobre">Sobre a OEA</a>
+          <a href="#">Missão e Visão</a>
+          <a href="#">Estatutos</a>
+          <a href="#">Conselho Directivo</a>
+          <div class="dropdown-divider"></div>
+          <a href="#">Relatórios e Contas</a>
+          <a href="#">Planos de Actividades</a>
+          <a href="#">Legislação</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#delegacoes">Delegações <span class="nav-arrow">▾</span></a>
+        <div class="dropdown">
+          <a href="#">Região Norte</a>
+          <a href="#">Região Centro</a>
+          <a href="#">Região Leste</a>
+          <a href="#">Região Sul</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#admissao">Admissões <span class="nav-arrow">▾</span></a>
+        <div class="dropdown">
+          <a href="#admissao">Como Inscrever-se</a>
+          <a href="#admissao">Requisitos</a>
+          <a href="#">Inscrição de Estrangeiros</a>
+          <a href="#admissao">Taxas e Quotas</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#vantagens">Vantagens</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#protocolos">Protocolos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#noticias">Notícias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#eventos">Eventos</a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn btn-outline" onclick="toggleSearch()">🔍</button>
+      <a href="#" class="btn btn-outline">Entrar</a>
+      <a href="#admissao" class="btn btn-primary">Inscrição</a>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">Em Destaque</div>
+  <div class="ticker-track" id="ticker">
+    <div class="ticker-item"><span class="ticker-dot"></span>Novo Bastonário eleito — Mandato 2026–2030 • Valorizar o Economista, Afirmar a Ordem, Fortalecer Angola</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Plano de Acção Estratégico 2026–2030 aprovado — digitalização e descentralização como pilares</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>OEA com 1.921 membros registados — actualização cadastral em curso</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Próximos eventos: Webinar de Economia — inscrições abertas</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Centro de Estudos e Formação da OEA em preparação — em breve</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Novo Bastonário eleito — Mandato 2026–2030 • Valorizar o Economista, Afirmar a Ordem, Fortalecer Angola</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Plano de Acção Estratégico 2026–2030 aprovado — digitalização e descentralização como pilares</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>OEA com 1.921 membros registados — actualização cadastral em curso</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Próximos eventos: Webinar de Economia — inscrições abertas</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Centro de Estudos e Formação da OEA em preparação — em breve</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <!-- Full-bleed professional background photo with dark overlay -->
+  <div style="position:absolute; inset:0; z-index:0; overflow:hidden;">
+    <img
+      src="https://images.unsplash.com/photo-1617244147299-5ef406921c35?fm=jpg&q=80&w=1800&auto=format&fit=crop"
+      alt="Profissional economista em traje formal"
+      style="width:100%; height:100%; object-fit:cover; object-position:center top; opacity:0.18; filter:grayscale(30%);"
+      loading="eager"
+    >
+    <!-- red-to-black gradient overlay to keep text readable -->
+    <div style="position:absolute; inset:0; background: linear-gradient(100deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.88) 45%, rgba(10,10,10,0.55) 100%);"></div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Mandato 2026–2030
+      </div>
+      <h1 class="hero-title">
+        A Voz dos<br>
+        <em>Economistas</em><br>
+        de Angola
+      </h1>
+      <p class="hero-desc">
+        A Ordem dos Economistas de Angola é a instituição de utilidade pública que regula, valoriza e representa os profissionais de economia em todo o território nacional.
+      </p>
+      <div class="hero-actions">
+        <a href="#admissao" class="btn btn-primary">Tornar-me Membro</a>
+        <a href="#sobre" class="btn btn-ghost">Conhecer a OEA</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-label">Membros</div>
+          <div class="hero-stat-value" data-count="1921">1.921<span>+</span></div>
+        </div>
+        <div>
+          <div class="hero-stat-label">Delegações</div>
+          <div class="hero-stat-value" data-count="4">4<span></span></div>
+        </div>
+        <div>
+          <div class="hero-stat-label">Anos de Actividade</div>
+          <div class="hero-stat-value" data-count="15">15<span>+</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!-- Professional economist photo card -->
+      <div class="hero-photo-frame">
+        <img
+          src="https://images.unsplash.com/photo-1616805765352-beedbad46b2a?fm=jpg&q=85&w=700&auto=format&fit=crop&crop=top"
+          alt="Economista profissional angolano"
+          class="hero-photo-img"
+          loading="eager"
+          onerror="this.style.display='none'; this.parentElement.querySelector('.hero-photo-fallback').style.display='flex';"
+        >
+        <!-- fallback if image fails -->
+        <div class="hero-photo-fallback" style="display:none; position:absolute; inset:0; background:rgba(192,24,26,0.08); align-items:center; justify-content:center; flex-direction:column; gap:12px;">
+          <div style="font-size:80px; opacity:0.3;">👔</div>
+          <div style="color:rgba(255,255,255,0.4); font-size:14px;">Economista Profissional</div>
+        </div>
+        <!-- Decorative frame border -->
+        <div class="hero-photo-border"></div>
+        <!-- Gold accent corner -->
+        <div class="hero-photo-corner-tl"></div>
+        <div class="hero-photo-corner-br"></div>
+        <!-- Bottom caption overlay -->
+        <div class="hero-photo-caption">
+          <div class="hero-photo-caption-inner">
+            <div style="font-size:11px; color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Economistas de Angola</div>
+            <div style="font-size:14px; color:white; font-weight:500; line-height:1.4;">Profissionais que movem<br>a economia nacional</div>
+          </div>
+          <div class="hero-photo-caption-badge">
+            <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white; line-height:1;">1.921</div>
+            <div style="font-size:10px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.08em;">membros</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal-left">
+        <div class="about-img-wrap">
+          <div class="about-img-pattern"></div>
+          <div class="about-emblem-large">
+            <span class="about-emblem-letters">OEA</span>
+          </div>
+        </div>
+        <div class="about-float-card about-float-1">
+          <div class="about-float-label">Membros Activos</div>
+          <div class="about-float-val">1.921 <span>registados</span></div>
+        </div>
+        <div class="about-float-card about-float-2">
+          <div class="about-float-label">Fundada em</div>
+          <div class="about-float-val">2010 <span>Angola</span></div>
+        </div>
+      </div>
+
+      <div class="about-content reveal-right">
+        <div class="section-tag">Sobre a OEA</div>
+        <div class="gold-sep"></div>
+        <h2 class="section-title">Regulamos, Representamos<br>e Valorizamos</h2>
+        <p class="about-lead">
+          A Ordem dos Economistas de Angola é uma Instituição de Utilidade Pública que defende o rigor, a ética e a excelência na prática da ciência económica em Angola.
+        </p>
+        <p class="about-body">
+          Fundada para garantir os mais elevados padrões de competência e deontologia profissional, a OEA representa os interesses de todos os economistas angolanos, promovendo a sua valorização e afirmação como actores centrais no desenvolvimento do país.<br><br>
+          No âmbito do mandato 2026–2030, a OEA compromete-se a modernizar-se digitalmente, descentralizar a sua presença pelo território nacional e reforçar a sua influência no debate económico nacional e internacional.
+        </p>
+
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">⚖️</div>
+            <div class="pillar-title">Regulação</div>
+            <div class="pillar-desc">Zelar pelo cumprimento das normas deontológicas e do exercício ético da profissão.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🎓</div>
+            <div class="pillar-title">Formação</div>
+            <div class="pillar-desc">Centro de Estudos e Formação com ≥ 6 cursos por ano para membros e público.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title">Representação</div>
+            <div class="pillar-desc">Defender os interesses da classe nos fóruns nacionais, regionais e internacionais.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">💡</div>
+            <div class="pillar-title">Inovação</div>
+            <div class="pillar-desc">Digitalização de 100% dos serviços e presença em 5 Conselhos Regionais até 2030.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTÍCIAS -->
+<section class="section noticias" id="noticias">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="section-tag">Últimas Notícias</div>
+        <div class="gold-sep"></div>
+        <h2 class="section-title" style="margin-bottom:0;">Informação e Actualidade</h2>
+      </div>
+      <a href="#" class="btn btn-outline">Ver todas as notícias →</a>
+    </div>
+
+    <div class="news-grid">
+      <a class="news-card news-card-featured reveal" href="#" style="transition-delay:0.1s;">
+        <div class="news-img" style="height: 280px;">
+          <div class="news-img-pattern" style="background: linear-gradient(135deg, rgba(192,24,26,0.08), rgba(201,168,76,0.06));"></div>
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:80px; opacity:0.15;">📊</div>
+          <div class="news-tag-pill">Institucional</div>
+        </div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span>2 Jun 2026</span>
+            <span class="news-meta-dot"></span>
+            <span>Comunicado Oficial</span>
+          </div>
+          <h3 class="news-card-title">Novo Bastonário da OEA Eleito para o Mandato 2026–2030</h3>
+          <p class="news-excerpt">No âmbito do processo eleitoral conduzido de forma transparente e democrática, foi eleito o novo Bastonário da Ordem dos Economistas de Angola. O novo líder apresenta um ambicioso plano de acção estratégico orientado para a digitalização, valorização e afirmação dos economistas angolanos.</p>
+          <div class="news-read-more">Ler mais →</div>
+        </div>
+      </a>
+
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <a class="news-card news-card-sm reveal" href="#" style="transition-delay:0.2s;">
+          <div class="news-img">
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:40px; opacity:0.15;">📜</div>
+            <div class="news-tag-pill" style="background:var(--gold);">Estratégia</div>
+          </div>
+          <div class="news-body">
+            <div class="news-meta"><span>28 Mai 2026</span><span class="news-meta-dot"></span><span>OEA</span></div>
+            <h3 class="news-card-title">Plano de Acção Estratégico 2026–2030 Aprovado</h3>
+            <div class="news-read-more">Ler mais →</div>
+          </div>
+        </a>
+        <a class="news-card news-card-sm reveal" href="#" style="transition-delay:0.3s;">
+          <div class="news-img">
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:40px; opacity:0.15;">🤝</div>
+            <div class="news-tag-pill">Protocolos</div>
+          </div>
+          <div class="news-body">
+            <div class="news-meta"><span>15 Mai 2026</span><span class="news-meta-dot"></span><span>OEA</span></div>
+            <h3 class="news-card-title">OEA Assina Protocolos com Universidades Angolanas</h3>
+            <div class="news-read-more">Ler mais →</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="news-sidebar">
+        <div class="news-list-item reveal" style="transition-delay:0.35s;">
+          <div class="news-list-img">📰</div>
+          <div>
+            <div class="news-list-title">Primeiro Parecer Técnico da OEA sobre o OGE 2026</div>
+            <div class="news-list-date">10 Mai 2026</div>
+          </div>
+        </div>
+        <div class="news-list-item reveal" style="transition-delay:0.4s;">
+          <div class="news-list-img">🎓</div>
+          <div>
+            <div class="news-list-title">Centro de Estudos e Formação em fase de constituição</div>
+            <div class="news-list-date">5 Mai 2026</div>
+          </div>
+        </div>
+        <div class="news-list-item reveal" style="transition-delay:0.45s;">
+          <div class="news-list-img">🌍</div>
+          <div>
+            <div class="news-list-title">OEA participa em fórum económico africano em Joanesburgo</div>
+            <div class="news-list-date">1 Mai 2026</div>
+          </div>
+        </div>
+        <div class="news-list-item reveal" style="transition-delay:0.5s;">
+          <div class="news-list-img">📊</div>
+          <div>
+            <div class="news-list-title">Actualização cadastral: 80% dos membros com dados validados</div>
+            <div class="news-list-date">25 Abr 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="section" id="eventos">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="section-tag">Agenda</div>
+        <div class="gold-sep"></div>
+        <h2 class="section-title" style="margin-bottom:0;">Próximos Eventos</h2>
+      </div>
+      <a href="#" class="btn btn-outline">Ver agenda completa →</a>
+    </div>
+
+    <div class="eventos-grid">
+      <div class="evento-card reveal" style="transition-delay:0.1s;">
+        <div class="evento-header">
+          <div class="evento-date">
+            <div class="evento-date-day">30</div>
+            <div class="evento-date-month">Junho 2026</div>
+          </div>
+          <div class="evento-type-badge">Webinar</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">Economia e Gestão do Petróleo — Perspectivas para 2027</div>
+          <div class="evento-meta">🕐 15:00 – 17:00</div>
+          <div class="evento-meta">📍 Online — Zoom</div>
+          <div class="evento-meta">👤 Aberto a membros e convidados</div>
+        </div>
+        <div class="evento-footer">
+          <span class="evento-footer-label">Inscrições abertas</span>
+          <span class="evento-cta">Inscrever-me →</span>
+        </div>
+      </div>
+
+      <div class="evento-card reveal" style="transition-delay:0.2s;">
+        <div class="evento-header" style="background: var(--red-dark);">
+          <div class="evento-date">
+            <div class="evento-date-day">15</div>
+            <div class="evento-date-month">Julho 2026</div>
+          </div>
+          <div class="evento-type-badge">Congresso</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">1º Congresso Nacional dos Economistas de Angola</div>
+          <div class="evento-meta">🕐 09:00 – 18:00</div>
+          <div class="evento-meta">📍 Hotel Intercontinental, Luanda</div>
+          <div class="evento-meta">👤 ≥ 300 participantes esperados</div>
+        </div>
+        <div class="evento-footer">
+          <span class="evento-footer-label">Brevemente</span>
+          <span class="evento-cta">Saber mais →</span>
+        </div>
+      </div>
+
+      <div class="evento-card reveal" style="transition-delay:0.3s;">
+        <div class="evento-header" style="background: #6B3C00;">
+          <div class="evento-date">
+            <div class="evento-date-day">08</div>
+            <div class="evento-date-month">Agosto 2026</div>
+          </div>
+          <div class="evento-type-badge">Mentoria</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">Programa de Mentoria Profissional — Candidaturas Abertas</div>
+          <div class="evento-meta">🕐 14:00 – 16:00</div>
+          <div class="evento-meta">📍 Sede OEA, Luanda</div>
+          <div class="evento-meta">👤 30 vagas disponíveis</div>
+        </div>
+        <div class="evento-footer">
+          <span class="evento-footer-label">Candidaturas abertas</span>
+          <span class="evento-cta">Candidatar-me →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES ESTRATÉGICOS -->
+<section class="section pilares" id="plano">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-tag">Plano 2026–2030</div>
+      <div class="gold-sep" style="margin: 16px auto;"></div>
+      <h2 class="section-title">Três Eixos Estratégicos</h2>
+      <p class="section-desc">O Plano de Acção Estratégico assenta em três pilares fundamentais que guiam todas as iniciativas do mandato 2026–2030.</p>
+    </div>
+
+    <div class="pilares-grid">
+      <div class="pilar-card reveal" style="transition-delay:0.1s;">
+        <div class="pilar-number">01</div>
+        <div class="pilar-icon-wrap">🏆</div>
+        <div class="pilar-card-title">Valorização Profissional</div>
+        <div class="pilar-card-desc">Afirmar o economista angolano como actor central no desenvolvimento económico, com reconhecimento formal e prestígio institucional.</div>
+        <div class="pilar-card-metas">
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Congresso Nacional — ≥ 300 participantes</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Prémio Anual do Economista</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Programa de Mentoria — 30 pares</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Literacia económica e financeira</div>
+        </div>
+      </div>
+
+      <div class="pilar-card reveal" style="transition-delay:0.2s;">
+        <div class="pilar-number">02</div>
+        <div class="pilar-icon-wrap">📢</div>
+        <div class="pilar-card-title">Afirmação da Ordem</div>
+        <div class="pilar-card-desc">Consolidar a OEA como referência técnica nacional, com voz activa no debate económico e presença internacional.</div>
+        <div class="pilar-card-metas">
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>≥ 4 pareceres técnicos/ano</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Conferência Anual do OGE</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Revista, Cadernos e Anuário</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Barómetro de Fiscalidade</div>
+        </div>
+      </div>
+
+      <div class="pilar-card reveal" style="transition-delay:0.3s;">
+        <div class="pilar-number">03</div>
+        <div class="pilar-icon-wrap">💻</div>
+        <div class="pilar-card-title">Modernização Institucional</div>
+        <div class="pilar-card-desc">Digitalizar 100% dos serviços, instalar 5 Conselhos Regionais e garantir índice de satisfação dos membros ≥ 80%.</div>
+        <div class="pilar-card-metas">
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Portal digital com ≥ 3 serviços online</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Base de dados actualizada 100%</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>Centro de Estudos e Formação</div>
+          <div class="pilar-meta"><span class="pilar-meta-dot"></span>≥ 5 Conselhos Regionais activos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSÃO -->
+<section class="section" id="admissao">
+  <div class="section-inner">
+    <div class="section-header center" style="margin-bottom:48px;">
+      <div class="section-tag" style="justify-content:center;">Como Aderir</div>
+      <div class="gold-sep" style="margin:16px auto;"></div>
+      <h2 class="section-title">Torne-se Membro da OEA</h2>
+      <p class="section-desc">Junte-se à família dos economistas angolanos e beneficie de todos os serviços, representação e reconhecimento da Ordem.</p>
+    </div>
+
+    <div class="admissao-grid">
+      <div class="reveal-left">
+        <div class="admissao-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Verifique os Requisitos</div>
+              <div class="step-desc">Licenciatura, mestrado ou doutoramento em Economia, Gestão, Finanças, Planeamento ou áreas afins, obtido em Angola ou no estrangeiro.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Reúna a Documentação</div>
+              <div class="step-desc">Certidão de habilitações, bilhete de identidade/passaporte, fotografia actualizada, curriculum vitae e comprovativo de pagamento da jóia.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Submeta a Candidatura</div>
+              <div class="step-desc">Entregue o processo completo na sede da OEA ou, brevemente, através do portal digital em oea.economistas.ao.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Aguarde Aprovação</div>
+              <div class="step-desc">A Comissão de Admissões analisa o processo e, após aprovação, emite a cédula profissional e número de membro.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-title">Bem-vindo à OEA!</div>
+              <div class="step-desc">Aceda a todos os benefícios: formação, eventos, mentoria, representação e a rede de economistas angolanos.</div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn btn-primary" style="margin-top:16px;">Iniciar Candidatura →</a>
+      </div>
+
+      <div class="admissao-info reveal-right">
+        <div class="info-card">
+          <div class="info-card-title">📋 Documentos Necessários</div>
+          <ul class="info-list">
+            <li>Certidão de Habilitações Literárias (original ou cópia autenticada)</li>
+            <li>Bilhete de Identidade ou Passaporte válido</li>
+            <li>2 Fotografias tipo passe actuais</li>
+            <li>Curriculum Vitae detalhado</li>
+            <li>Comprovativo de Pagamento da Jóia de Inscrição</li>
+            <li>Declaração de idoneidade profissional (para estrangeiros)</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">💰 Taxas e Quotas</div>
+          <div class="fee-grid">
+            <div class="fee-box">
+              <div class="fee-label">Jóia de Inscrição</div>
+              <div class="fee-amount">Kz 25.000</div>
+              <div class="fee-period">pagamento único</div>
+            </div>
+            <div class="fee-box">
+              <div class="fee-label">Quota Mensal</div>
+              <div class="fee-amount">Kz 2.500</div>
+              <div class="fee-period">por mês</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card" style="background: rgba(192,24,26,0.05); border: 1px solid rgba(192,24,26,0.15);">
+          <div class="info-card-title" style="color: var(--red);">📞 Contacte-nos</div>
+          <p style="font-size:14px; color: var(--mid); line-height:1.65;">Para mais informações sobre o processo de admissão, contacte a Secretaria da OEA.</p>
+          <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:14px; color:var(--dark);">📞 (+244) 922 274 854</div>
+            <div style="font-size:14px; color:var(--dark);">✉ geral@oea.economistas.ao</div>
+            <div style="font-size:14px; color:var(--mid);">🕐 Seg–Sex: 09h00–17h00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VANTAGENS -->
+<section class="section vantagens" id="vantagens">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-tag" style="justify-content:center;">Benefícios</div>
+      <div class="gold-sep" style="margin:16px auto;"></div>
+      <h2 class="section-title">Vantagens de Ser Membro</h2>
+      <p class="section-desc">Ao integrar a OEA, beneficia de um conjunto de serviços, reconhecimento e oportunidades exclusivas para o seu desenvolvimento profissional.</p>
+    </div>
+
+    <div class="vantagens-grid">
+      <div class="vantagem-card reveal" style="transition-delay:0.05s;">
+        <span class="vantagem-icon">🎓</span>
+        <div class="vantagem-title">Formação Contínua</div>
+        <div class="vantagem-desc">Acesso ao Centro de Estudos e Formação com cursos, workshops e certificações a preços especiais para membros.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.1s;">
+        <span class="vantagem-icon">🤝</span>
+        <div class="vantagem-title">Rede Profissional</div>
+        <div class="vantagem-desc">Integre uma comunidade de +1.900 economistas angolanos e aceda a oportunidades de networking e colaboração.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.15s;">
+        <span class="vantagem-icon">📜</span>
+        <div class="vantagem-title">Cédula Profissional</div>
+        <div class="vantagem-desc">Obtenha o Título Profissional de Economista reconhecido legalmente em Angola para o exercício da profissão.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.2s;">
+        <span class="vantagem-icon">🌍</span>
+        <div class="vantagem-title">Protocolos e Parcerias</div>
+        <div class="vantagem-desc">Beneficie de descontos e acordos com universidades, empresas e instituições nacionais e internacionais.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.25s;">
+        <span class="vantagem-icon">📰</span>
+        <div class="vantagem-title">Publicações Técnicas</div>
+        <div class="vantagem-desc">Acesso à Revista de Economia, Cadernos de Economia e Anuário com os mais relevantes estudos e análises económicas.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.3s;">
+        <span class="vantagem-icon">🏆</span>
+        <div class="vantagem-title">Prémio do Economista</div>
+        <div class="vantagem-desc">Oportunidade de candidatura ao Prémio Anual do Economista Angolano, distinguindo o mérito e a excelência.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.35s;">
+        <span class="vantagem-icon">💼</span>
+        <div class="vantagem-title">Mentoria Profissional</div>
+        <div class="vantagem-desc">Programa estruturado de mentoria profissional que liga economistas experientes às novas gerações.</div>
+      </div>
+      <div class="vantagem-card reveal" style="transition-delay:0.4s;">
+        <span class="vantagem-icon">📊</span>
+        <div class="vantagem-title">Pareceres e Estudos</div>
+        <div class="vantagem-desc">Acesso antecipado a pareceres técnicos e estudos económicos publicados pela OEA sobre questões nacionais.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELEGAÇÕES -->
+<section class="section" id="delegacoes">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="section-tag">Território Nacional</div>
+        <div class="gold-sep"></div>
+        <h2 class="section-title" style="margin-bottom:0;">Delegações Regionais</h2>
+      </div>
+      <div style="font-size:14px; color:var(--mid);">5 Conselhos Regionais previstos até 2030</div>
+    </div>
+
+    <div class="delegacoes-grid">
+      <div class="delegacao-card reveal" style="transition-delay:0.1s;">
+        <div class="delegacao-icon">🏙️</div>
+        <div>
+          <div class="delegacao-title">Região Norte</div>
+          <div class="delegacao-provinces">Luanda · Malanje · Kwanza Norte · Bengo · Uíge · Zaire · Cabinda</div>
+        </div>
+      </div>
+      <div class="delegacao-card reveal" style="transition-delay:0.15s;">
+        <div class="delegacao-icon">🏔️</div>
+        <div>
+          <div class="delegacao-title">Região Centro</div>
+          <div class="delegacao-provinces">Huambo · Bié · Kwanza Sul · Benguela · Moxico</div>
+        </div>
+      </div>
+      <div class="delegacao-card reveal" style="transition-delay:0.2s;">
+        <div class="delegacao-icon">🌅</div>
+        <div>
+          <div class="delegacao-title">Região Leste</div>
+          <div class="delegacao-provinces">Lunda Norte · Lunda Sul · Moxico</div>
+        </div>
+      </div>
+      <div class="delegacao-card reveal" style="transition-delay:0.25s;">
+        <div class="delegacao-icon">🌊</div>
+        <div>
+          <div class="delegacao-title">Região Sul</div>
+          <div class="delegacao-provinces">Huíla · Cunene · Namibe · Kuando Kubango</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLOS -->
+<section class="section" id="protocolos" style="background: var(--light);">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="section-tag">Parcerias</div>
+        <div class="gold-sep"></div>
+        <h2 class="section-title" style="margin-bottom:0;">Protocolos Institucionais</h2>
+      </div>
+      <a href="#" class="btn btn-outline">Ver todos →</a>
+    </div>
+
+    <div class="protocolos-grid">
+      <div class="protocolo-card reveal" style="transition-delay:0.1s;">
+        <div class="protocolo-logo">🏛️</div>
+        <div class="protocolo-name">Ministério da Economia</div>
+        <div class="protocolo-desc">Protocolo de cooperação técnica para pareceres e estudos económicos de suporte à política pública.</div>
+        <span class="protocolo-type">Nacional</span>
+      </div>
+      <div class="protocolo-card reveal" style="transition-delay:0.15s;">
+        <div class="protocolo-logo">🏦</div>
+        <div class="protocolo-name">Banco Nacional de Angola</div>
+        <div class="protocolo-desc">Cooperação em matéria de regulação financeira, formação e produção de análise económica e monetária.</div>
+        <span class="protocolo-type">Nacional</span>
+      </div>
+      <div class="protocolo-card reveal" style="transition-delay:0.2s;">
+        <div class="protocolo-logo">🎓</div>
+        <div class="protocolo-name">Universidades Angolanas</div>
+        <div class="protocolo-desc">Protocolos com principais universidades para acreditação, estágios e programas de formação contínua.</div>
+        <span class="protocolo-type">Académico</span>
+      </div>
+      <div class="protocolo-card reveal" style="transition-delay:0.25s;">
+        <div class="protocolo-logo">🌍</div>
+        <div class="protocolo-name">Ordens Africanas</div>
+        <div class="protocolo-desc">Cooperação com ordens e associações de economistas de países africanos lusófonos e SADC.</div>
+        <span class="protocolo-type">Internacional</span>
+      </div>
+      <div class="protocolo-card reveal" style="transition-delay:0.3s;">
+        <div class="protocolo-logo">📊</div>
+        <div class="protocolo-name">Instituto Nacional de Estatística</div>
+        <div class="protocolo-desc">Parceria para produção, análise e divulgação de dados estatísticos relevantes para a classe.</div>
+        <span class="protocolo-type">Nacional</span>
+      </div>
+      <div class="protocolo-card reveal" style="transition-delay:0.35s;">
+        <div class="protocolo-logo">🏢</div>
+        <div class="protocolo-name">Sector Privado</div>
+        <div class="protocolo-desc">Acordos com empresas e grupos empresariais para estágios, empregabilidade e desenvolvimento profissional.</div>
+        <span class="protocolo-type">Empresarial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="newsletter-inner">
+    <h2 class="newsletter-title">Fique Sempre Informado</h2>
+    <p class="newsletter-desc">Subscreva a newsletter da OEA e receba as últimas notícias, eventos e publicações directamente na sua caixa de correio.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="O seu endereço de email">
+      <button class="newsletter-btn">Subscrever</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-gold-bar"></div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="logo" style="display:inline-flex; margin-bottom:4px;">
+          <div class="logo-emblem" style="width:44px; height:44px;">
+            <span class="logo-emblem-text" style="font-size:13px;">OEA</span>
+          </div>
+          <div class="logo-text" style="margin-left:12px;">
+            <span class="logo-title" style="color:white; font-size:15px;">Ordem dos Economistas</span>
+            <span class="logo-subtitle" style="color:rgba(255,255,255,0.4);">de Angola</span>
+          </div>
+        </a>
+        <p class="footer-brand-desc">
+          Instituição de Utilidade Pública que regula, representa e valoriza os economistas angolanos. Valorizar o Economista · Afirmar a Ordem · Fortalecer Angola.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" title="Facebook">f</a>
+          <a href="#" class="social-btn" title="LinkedIn">in</a>
+          <a href="#" class="social-btn" title="Twitter/X">x</a>
+          <a href="#" class="social-btn" title="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Links Rápidos</div>
+        <ul class="footer-links">
+          <li><a href="#sobre">→ Sobre a OEA</a></li>
+          <li><a href="#admissao">→ Como Aderir</a></li>
+          <li><a href="#vantagens">→ Vantagens de Membro</a></li>
+          <li><a href="#eventos">→ Eventos</a></li>
+          <li><a href="#noticias">→ Notícias</a></li>
+          <li><a href="#protocolos">→ Protocolos</a></li>
+          <li><a href="#">→ Estatutos</a></li>
+          <li><a href="#">→ Área de Membros</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Instituição</div>
+        <ul class="footer-links">
+          <li><a href="#">→ Missão e Visão</a></li>
+          <li><a href="#">→ Conselho Directivo</a></li>
+          <li><a href="#">→ Delegações Regionais</a></li>
+          <li><a href="#">→ Plano Estratégico</a></li>
+          <li><a href="#">→ Relatórios e Contas</a></li>
+          <li><a href="#">→ Legislação</a></li>
+          <li><a href="#">→ Código Deontológico</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contactos</div>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span class="footer-contact-text">Rua Gastão de Sousa Dias, Nº 14-14A, R/C, 1º e 2º Andar, Bairro Alvalade, Maianga, Luanda</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📞</span>
+            <span class="footer-contact-text">(+244) 922 274 854</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">✉</span>
+            <span class="footer-contact-text">geral@oea.economistas.ao</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">🕐</span>
+            <span class="footer-contact-text">Seg–Sex: 09h00–17h00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <span>© 2026 Ordem dos Economistas de Angola — Todos os direitos reservados.</span>
+      <div style="display:flex; gap:20px;">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Mapa do Site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#" onclick="toggleMobileNav()">Início</a>
+  <a href="#sobre" onclick="toggleMobileNav()">Sobre a OEA</a>
+  <a href="#delegacoes" onclick="toggleMobileNav()">Delegações</a>
+  <a href="#admissao" onclick="toggleMobileNav()">Admissões</a>
+  <a href="#vantagens" onclick="toggleMobileNav()">Vantagens</a>
+  <a href="#protocolos" onclick="toggleMobileNav()">Protocolos</a>
+  <a href="#noticias" onclick="toggleMobileNav()">Notícias</a>
+  <a href="#eventos" onclick="toggleMobileNav()">Eventos</a>
+  <div class="mobile-nav-actions">
+    <a href="#" class="btn btn-outline" style="color:white; border-color:rgba(255,255,255,0.3);">Entrar na Área de Membros</a>
+    <a href="#admissao" class="btn btn-primary" onclick="toggleMobileNav()">Inscrição na OEA</a>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="toggleSearch()">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <input type="text" class="search-input" placeholder="Pesquisar na OEA..." id="searchInput" autofocus>
+    <div style="margin-top:16px; font-size:13px; color:var(--mid);">Pesquise notícias, eventos, membros, protocolos e mais…</div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Voltar ao topo">↑</button>
+
+<script>
+  // === REVEAL ON SCROLL ===
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, (entry.target.dataset.delay || 0));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // === MOBILE NAV ===
+  function toggleMobileNav() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // === SEARCH ===
+  function toggleSearch() {
+    const overlay = document.getElementById('searchOverlay');
+    overlay.classList.toggle('open');
+    if (overlay.classList.contains('open')) {
+      setTimeout(() => document.getElementById('searchInput').focus(), 100);
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('searchOverlay').classList.remove('open');
+      document.getElementById('mobileNav').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // === SCROLL TO TOP ===
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  });
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // === ACTIVE NAV LINK ===
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  }, { passive: true });
+
+  // === COUNTER ANIMATION ===
+  function animateCount(el, target, suffix) {
+    const duration = 2000;
+    const start = performance.now();
+    const update = (time) => {
+      const elapsed = time - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const val = Math.floor(eased * target);
+      el.innerHTML = val.toLocaleString('pt-PT') + '<span>' + suffix + '</span>';
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const count = parseInt(el.dataset.count);
+        const suffix = el.querySelector('span')?.textContent || '';
+        animateCount(el, count, suffix);
+        statsObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-count]').forEach(el => statsObserver.observe(el));
+
+  // === TICKER CLONE ===
+  const ticker = document.getElementById('ticker');
+  if (ticker) {
+    ticker.addEventListener('animationend', () => {
+      ticker.style.animation = 'none';
+      ticker.offsetHeight;
+      ticker.style.animation = '';
+    });
+  }
+
+  // === NEWSLETTER ===
+  document.querySelector('.newsletter-btn')?.addEventListener('click', function() {
+    const input = document.querySelector('.newsletter-input');
+    if (input.value && input.value.includes('@')) {
+      this.textContent = '✓ Subscrito!';
+      this.style.background = '#10b981';
+      this.style.color = 'white';
+      input.value = '';
+      setTimeout(() => {
+        this.textContent = 'Subscrever';
+        this.style.background = '';
+        this.style.color = '';
+      }, 3000);
+    } else {
+      input.style.borderColor = 'rgba(255,80,80,0.6)';
+      setTimeout(() => input.style.borderColor = '', 2000);
+    }
+  });
+</script>
+</body>
 </html>
